@@ -18,9 +18,9 @@ app.use(function (req, res, next) {
 app.use(express.static(__dirname + '/root/dist/'));
 
 //Arduino data and date and time information
-var datetime = new Date();
 
     port.on('data', (data) => {
+        var datetime    = new Date();
         var tempUmd     = data.toString();
         var s           = tempUmd.split(';');
         var tempUmpTime = s[0]+"%" + " " + s[1]+"°C" + " " + datetime.toLocaleDateString() + " " + datetime.toLocaleTimeString();
