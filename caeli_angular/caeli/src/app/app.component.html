@@ -1,14 +1,25 @@
-<div *ngIf="infoTempUmd != null">
-  <h3>Temperature</h3>
-  <span>{{infoTempUmd.T}}</span>
-</div>
+<div class="container">
+  <app-nav-bar></app-nav-bar>
+  <div class="dateAndTime" *ngIf="infoTempUmd != null">
+    <h3>Date and Time</h3>
+    <span>{{infoTempUmd.day}} - {{infoTempUmd.time}}</span>
+  </div>
 
-<div>
-  <h3>Umidity</h3>
-  <span>{{infoTempUmd.U}}</span>
-</div>
+  <div *ngIf="infoTempUmd != null" class="infoTempUmd">
+    <div class="card">
+      <h3>Temperature</h3>
+      <h4>{{infoTempUmd.T}} °C</h4>
+    </div>
 
-<div>
-  <h3>Date and Time</h3>
-  <span>{{infoTempUmd.date}}</span>
+    <div class="card">
+      <h3>Humidity</h3>
+      <h4>{{infoTempUmd.H}} %</h4>
+    </div>
+  </div>
+
+  <div>
+    <canvas id="chart"></canvas>
+  </div>
+
+  <app-footer></app-footer>
 </div>

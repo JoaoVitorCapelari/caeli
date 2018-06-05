@@ -5,27 +5,26 @@
 #define DHTPIN A1 // pino que estamos conectado
 #define DHTTYPE DHT11 // DHT 11
 
-// Conecte pino 1 do sensor (esquerda) ao +5V
-// Conecte pino 2 do sensor ao pino de dados definido em seu Arduino
-// Conecte pino 4 do sensor ao GND
-// Conecte o resistor de 10K entre pin 2 (dados) 
-// e ao pino 1 (VCC) do sensor
+// Conect pin 1 to left sensor +5V
+// Conect pin 2 to sensor to the data pin defined in Arduino
+// Conect pin 4 to sensor in GND
+// Conect the resistor 10K between pin 2 (data) 
+// and pin 1 (VCC) of the sensor
 DHT dht(DHTPIN, DHTTYPE);
 
 void setup() 
 {
   Serial.begin(9600);
-  Serial.println("Ceara Feelings test!");
   dht.begin();
 }
 
 void loop() 
 {
-  // A leitura da temperatura e umidade pode levar 250ms!
-  // O atraso do sensor pode chegar a 2 segundos.
+  // The reading of temperature and umidity could take 250ms!
+  // Delay of the sensor could reach 2 seconds.
   float h = dht.readHumidity();
   float t = dht.readTemperature();
-  // testa se retorno é valido, caso contrário algo está errado.
+  // test if return is valid, if not something went wrong!.
   if (isnan(t) || isnan(h)) 
   {
     Serial.println("Failed to read from DHT");
@@ -44,5 +43,5 @@ void loop()
     Serial.print(buffer);
   
   }
-  delay(1000);
+  delay(10000);
 }
